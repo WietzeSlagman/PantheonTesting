@@ -14,22 +14,22 @@ contract SimpleStorage {
         storedData2 = y;
     }
 
-    function set1() public {
+    function setContract() public {
         SimpleStorage2 sscontract = new SimpleStorage2();
         ss2addr = address(sscontract);
     }
 
-    function set2(bytes32 x,  bytes32 y) public {
+    function setValues(bytes32 x,  bytes32 y) public {
         SimpleStorage2 instance = SimpleStorage2(ss2addr);
 
         instance.set(x, y);
     }
 
-    function get1() public view returns (bytes32 retVal, bytes32 retVal2) {
+    function getLocal() public view returns (bytes32 retVal, bytes32 retVal2) {
         return (storedData,storedData2);
     }
 
-    function get2() public view returns (address retVal3,bytes32 retVal, bytes32 retVal2) {
+    function getInstance() public view returns (address retVal3,bytes32 retVal, bytes32 retVal2) {
         SimpleStorage2 instance = SimpleStorage2(ss2addr);
         return (ss2addr, instance.storedData(), instance.storedData2());
     }
